@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Demo Day - SN — T4S x GOMYCODE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --gomycode-pink: #e83e8c; --t4s-blue: #185FA5; --bg: #f0f2f5; --text: #333; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; line-height: 1.6; }
+        .container { max-width: 650px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        
+        .header { text-align: center; margin-bottom: 30px; }
+        .logos { display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 20px; }
+        .logos img { height: 45px; object-fit: contain; }
+        h1 { font-size: 1.5rem; color: var(--t4s-blue); margin-bottom: 10px; }
+        .description { font-size: 0.9rem; color: #666; margin-bottom: 20px; }
+        .location-badge { display: inline-block; background: #fff1f6; color: var(--gomycode-pink); padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 0.85rem; border: 1px solid #f8d7da; }
+
+        fieldset { border: 1px solid #eee; border-radius: 10px; padding: 20px; margin-bottom: 25px; }
+        legend { font-weight: 700; color: var(--t4s-blue); padding: 0 10px; font-size: 1.1rem; }
+
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-family: inherit; font-size: 0.95rem; }
+        input:focus, textarea:focus { border-color: var(--t4s-blue); outline: none; box-shadow: 0 0 0 3px rgba(24, 95, 165, 0.1); }
+        
+        .rsvp-toggle { display: flex; gap: 10px; margin-bottom: 10px; }
+        .rsvp-toggle input { display: none; }
+        .rsvp-toggle label { flex: 1; text-align: center; padding: 12px; border: 2px solid #eee; border-radius: 8px; cursor: pointer; transition: 0.2s; margin-bottom: 0; }
+        .rsvp-toggle input:checked + label { border-color: var(--gomycode-pink); background: var(--gomycode-pink); color: white; }
+
+        .file-upload { position: relative; border: 2px dashed #ddd; border-radius: 8px; padding: 20px; text-align: center; cursor: pointer; transition: 0.3s; }
+        .file-upload:hover { border-color: var(--t4s-blue); background: #f8fbff; }
+        .file-upload input { position: absolute; opacity: 0; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; }
+        #file-name { margin-top: 10px; font-size: 0.85rem; color: var(--t4s-blue); font-weight: bold; }
+
+        button { width: 100%; background: var(--t4s-blue); color: white; border: none; padding: 16px; border-radius: 10px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        button:hover { background: #144d86; transform: translateY(-2px); }
+        button:disabled { background: #ccc; cursor: not-allowed; }
+
+        .footer { text-align: center; margin-top: 20px; font-size: 0.8rem; color: #999; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="logos">
+            <img src="https://i.ibb.co/vz6mD6b/gomycode-logo.png" alt="GOMYCODE">
+            <img src="https://i.ibb.co/Qv6Wz6j/t4s-logo.png" alt="T4S">
+        </div>
+        <h1>Invitation Demo Day — T4S x GOMYCODE</h1>
+        <p class="description">Ce formulaire prend moins de 5 minutes. Merci pour votre contribution ! 🙏</p>
+        <div class="location-badge">📍 Lieu : Point E (Dakar) | 25 Avril 2026</div>
+    </div>
+
+    <form id="rsvpForm">
+        <fieldset>
+            <legend>Informations Personnelles</legend>
+            <div class="form-group">
+                <label>Serez-vous présent(e) ? *</label>
+                <div class="rsvp-toggle">
+                    <input type="radio" name="presence" id="pres-oui" value="Oui" checked>
+                    <label for="pres-oui">OUI ✅</label>
+                    <input type="radio" name="presence" id="pres-non" value="Non">
+                    <label for="pres-non">NON ❌</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prénom *</label>
+                <input type="text" id="prenom" required placeholder="Ex: Aminata">
+            </div>
+            <div class="form-group">
+                <label for="nom">Nom de famille *</label>
+                <input type="text" id="nom" required placeholder="Ex: Diallo">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Professionnel *</label>
+                <input type="email" id="email" required placeholder="nom@startup.com">
+            </div>
+            <div class="form-group">
+                <label for="startup">Startup / Entreprise *</label>
+                <input type="text" id="startup" required placeholder="Ex: Paps, Logidoo...">
+            </div>
+            <div class="form-group">
+                <label for="poste">Poste / Fonction actuelle *</label>
+                <input type="text" id="poste" required placeholder="Ex: Développeur Fullstack">
+            </div>
+            <div class="form-group">
+                <label for="module">Module Talent 4 Startups suivi *</label>
+                <select id="module" required>
+                    <option value="">-- Choisir un module --</option>
+                    <option value="PSPO">PSPO (Product Owner)</option>
+                    <option value="PMP">PMP (Gestion de projet)</option>
+                    <option value="Data Analytics">Data Analytics (Power BI)</option>
+                    <option value="Cyber Security">Cyber Security</option>
+                    <option value="Digital Marketing">Digital Marketing (META)</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Impact & Témoignage</legend>
+            <div class="form-group">
+                <label for="impact">Comment cette formation a changé votre quotidien ? *</label>
+                <textarea id="impact" rows="3" required placeholder="Soyez précis sur vos nouvelles méthodes..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exemple">Exemple concret d'impact dans votre startup *</label>
+                <textarea id="exemple" rows="2" required placeholder="Un succès récent grâce à la formation ?"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="recommandation">Recommanderiez-vous ce programme ? (1 à 10) *</label>
+                <input type="number" id="recommandation" min="1" max="10" required placeholder="Note de 1 à 10">
+            </div>
+            <div class="form-group">
+                <label for="testimonial">Votre témoignage en une ou deux phrases (citation) *</label>
+                <textarea id="testimonial" rows="3" required placeholder="Citation qui sera publiée sur nos supports..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>Photo pour accompagner le témoignage (Optionnel)</label>
+                <div class="file-upload">
+                    <span>📸 Cliquez pour ajouter une photo</span>
+                    <input type="file" id="imageInput" accept="image/*">
+                    <div id="file-name"></div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Droits & Contact</legend>
+            <div class="form-group">
+                <label for="accord_publi">Accord de publication *</label>
+                <select id="accord_publi" required>
+                    <option value="Oui, j'accepte">Oui, j'accepte la publication</option>
+                    <option value="Non, anonyme">Non, je préfère rester anonyme</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="accord_film">Acceptez-vous d'être filmé(e) le 25 Avril ? *</label>
+                <select id="accord_film" required>
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+                    <option value="Peut-être">Peut-être, contactez-moi</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="whatsapp">Numéro WhatsApp (Coordination vidéo)</label>
+                <input type="text" id="whatsapp" placeholder="+221 7X XXX XX XX">
+            </div>
+            <div class="form-group">
+                <label for="remarques">Questions ou remarques ?</label>
+                <textarea id="remarques" rows="2" placeholder="Un mot pour l'équipe GOMYCODE ?"></textarea>
+            </div>
+        </fieldset>
+
+        <button type="submit" id="submitBtn">Envoyer mon témoignage</button>
+    </form>
+    
+    <div class="footer">
+        © 2026 GOMYCODE x Talent 4 Startups Sénégal
+    </div>
+</div>
+
+<script>
+    // URL de ton Script Google (remplace bien par la tienne)
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9ZHTR41IzGkYbQClOpWYUaIV1_NuPf_gv4vYOVlddBAAkUbL67sOJgTo90gmo56L8/exec";
+
+    // Affichage du nom de fichier sélectionné
+    document.getElementById('imageInput').onchange = function() {
+        if(this.files[0]) {
+            document.getElementById('file-name').innerText = "Fichier : " + this.files[0].name;
+        }
+    };
+
+    document.getElementById('rsvpForm').onsubmit = function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.innerText = "Envoi en cours...";
+
+        const fileInput = document.getElementById('imageInput');
+        const file = fileInput.files[0];
+        
+        const sendData = (base64Img = null) => {
+            const payload = {
+                prenom: document.getElementById('prenom').value,
+                nom: document.getElementById('nom').value,
+                vient: document.querySelector('input[name="presence"]:checked').value,
+                email: document.getElementById('email').value,
+                startup: document.getElementById('startup').value,
+                poste: document.getElementById('poste').value,
+                module: document.getElementById('module').value,
+                impact: document.getElementById('impact').value,
+                exemple: document.getElementById('exemple').value,
+                recommandation: document.getElementById('recommandation').value,
+                testimonial: document.getElementById('testimonial').value,
+                accord_publi: document.getElementById('accord_publi').value,
+                accord_film: document.getElementById('accord_film').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                remarques: document.getElementById('remarques').value,
+                image: base64Img,
+                imageName: file ? file.name : null
+            };
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                document.querySelector('.container').innerHTML = `
+                    <div style="text-align: center; padding: 40px 0;">
+                        <div style="font-size: 60px;">🎉</div>
+                        <h2 style="color: var(--t4s-blue);">Merci ${payload.prenom} !</h2>
+                        <p>Ton témoignage a bien été enregistré.</p>
+                        <p style="font-weight: bold; color: var(--gomycode-pink);">Rendez-vous le 25 Avril au Point E !</p>
+                        <br>
+                        <a href="index.html" style="color: var(--t4s-blue); text-decoration: underline;">Envoyer une autre réponse</a>
+                    </div>
+                `;
+            })
+            .catch(err => {
+                alert("Erreur lors de l'envoi. Vérifiez votre connexion.");
+                btn.disabled = false;
+                btn.innerText = "Envoyer mon témoignage";
+            });
+        };
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                sendData(event.target.result);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            sendData();
+        }
+    };
+</script>
+
+</body>
+</html>
